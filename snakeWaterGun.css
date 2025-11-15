@@ -1,0 +1,31 @@
+body{
+    text-align: center;
+}
+.game-board{
+    height:370px;
+    width:800px;
+    background-color: darkgoldenrod;
+    border: 2px solid black;
+    position: relative;
+    left:200px;
+}
+#score {
+  font-weight: bold;
+  font-size: 20px;
+}
+#startBtn{
+    padding:10px 20px;
+    font-size:20px;
+    background-color:rgb(31, 157, 31);
+    color:white;
+    border:3mm ridge rgba(212, 192, 38, 0.6);
+    border-radius:10px;
+    cursor: pointer;
+  margin-bottom: 15px;
+}
+#startBtn:hover{
+background-color:darkgreen;
+}
+
+
+
