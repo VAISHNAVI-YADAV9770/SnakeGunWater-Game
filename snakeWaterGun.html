@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Snake Water Gun Game</title>
+  <style>
+    body {
+      
+      text-align: center;
+      margin-top: 45px;
+    }
+    button {
+      margin: 15px;
+      padding: 15px 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #result {
+      font-size: 25px;
+      margin-top: 35px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Snake 🐍 Water 💧 Gun 🔫</h1>
+  <p>Choose your choice:</p>
+
+  <button onclick="play('snake')">🐍 Snake</button>
+  <button onclick="play('water')">💧 Water</button>
+  <button onclick="play('gun')">🔫 Gun</button>
+  <button onclick="resetScore();">Restart</button>
+
+  <div id="result"></div>
+  <span id="score"></span>
+
+
+  <script>
+    let score={Win:0,Lose:0,Tie:0,};
+    let scoreStr="";
+    let tie =score.Tie;
+    let win =score.Win;
+    let lose =score.Lose;
+
+    function play(userChoice) {
+      const choices = ['snake', 'water', 'gun'];
+      const computerChoice = choices[Math.floor(Math.random() * 3)];
+      
+      let result = '';
+ 
+      if (userChoice === computerChoice) {
+        result = "It's a draw! 🤝";
+        tie+=1;
+      //  document.querySelector("#tieScore").innerHTML=`Tie:${score.Tie+=1}`;
+      } else if (
+        (userChoice === 'snake' && computerChoice === 'water') ||
+        (userChoice === 'water' && computerChoice === 'gun') ||
+        (userChoice === 'gun' && computerChoice === 'snake')
+      ) {
+        result =` You win! 🎉 ${userChoice} beats ${computerChoice}`;
+       win+=1;
+       //  document.querySelector("#winScore").innerHTML=`Win:${score.Win+=1}`;
+      } else {
+        result =` You lose! 😢 ${computerChoice} beats ${userChoice}`;
+        lose+=1;
+         //document.querySelector("#loseScore").innerHTML=`Lose:${score.Lose+=1}`;
+      }
+
+      document.getElementById('result').innerHTML = `
+        <p>You chose: <strong>${userChoice}</strong></p>
+        <p>Computer chose: <strong>${computerChoice}</strong></p>
+        <p>${result}</p>
+      `;
+
+    scoreStr= document.querySelector("#score").innerHTML= `Score: Win:${win},Lose:${lose},Tie:${tie}`;
+   console.log(scoreStr);
+    }
+
+function resetScore() {
+  win = 0;
+  lose = 0;
+  tie = 0;
+  document.querySelector("#score").innerHTML = `Score: Win:${win}, Lose:${lose}, Tie:${tie}`;
+  document.querySelector("#result").innerHTML='';
+
+}
+
+  </script>
+
+</body>
+</html>
